@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CreateMovementService, type: :service do
   let(:store) { create(:store) }
-  let!(:params) { attributes_for(:movement, store_id: store.id) }
+  let(:params) { attributes_for(:movement, store_id: store.id) }
 
   subject do
     described_class.call(store:, params:)
@@ -103,6 +103,17 @@ RSpec.describe CreateMovementService, type: :service do
 
         it_behaves_like 'not create anything'
       end
+    end
+
+    context 'with an invalid kind' do
+      let(:params) { attributes_for(:movement, store_id: store.id, kind: Faker::Internet.unique.slug) }
+
+      it 'is not valid' do
+        expect(subject.errors).to eq({ kind: [ "must be one of: debit, bank_slip, financing, credit, loan_receipt, sales, ted_receipt, doc_receipt, rent" ] })
+        expect(subject.success).to eq(false)
+      end
+
+      it_behaves_like 'not create anything'
     end
   end
 end

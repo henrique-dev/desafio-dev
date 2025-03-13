@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_13_144753) do
   enable_extension "plpgsql"
 
   create_table "movements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "kind", null: false
+    t.string "kind", null: false
     t.date "occurred_on", null: false
     t.decimal "value", null: false
     t.string "personal_code", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_13_144753) do
     t.string "owner_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_stores_on_name", unique: true
   end
 
   add_foreign_key "movements", "stores"
