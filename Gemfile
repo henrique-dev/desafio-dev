@@ -41,6 +41,18 @@ gem "bootsnap", require: false
 # Simple, efficient background processing for Ruby.
 gem "sidekiq", "~> 8.0"
 
+# Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
+gem "faker", "~> 3.5", ">= 3.5.1"
+
+# Use Pry as your rails console
+gem "pry-rails", "~> 0.3.11"
+
+# Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+gem "awesome_print", "~> 1.9", ">= 1.9.2"
+
+# Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
+gem "kaminari", "~> 1.2", ">= 1.2.2"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -50,15 +62,33 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Byebug is a Ruby debugger. It's implemented using the TracePoint C API for execution control and the Debug Inspector C API for call stack navigation.
+  gem "byebug", "~> 11.1", ">= 11.1.3"
+
+  # factory_bot_rails provides integration between factory_bot and rails 5.0 or newer
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # BDD for Ruby
+  gem "rspec", "~> 3.13"
+
+  # rspec-rails is a testing framework for Rails 5+.
+  gem "rspec-rails", "~> 7.1", ">= 7.1.1"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing.
+  gem "database_cleaner-active_record", "~> 2.2"
+
+  # Strategies for cleaning databases using Mongoid. Can be used to ensure a clean state for testing.
+  gem "database_cleaner-mongoid", "~> 2.0", ">= 2.0.1"
 end
