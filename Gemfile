@@ -88,7 +88,4 @@ group :test do
 
   # Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing.
   gem "database_cleaner-active_record", "~> 2.2"
-
-  # Strategies for cleaning databases using Mongoid. Can be used to ensure a clean state for testing.
-  gem "database_cleaner-mongoid", "~> 2.0", ">= 2.0.1"
 end
