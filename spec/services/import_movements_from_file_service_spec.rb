@@ -8,9 +8,10 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
       tempfile: fixture_file_upload('CNAB.txt')
     })
   end
+  let(:importer) { create(:importer, :with_file) }
 
   subject do
-    described_class.call(file:)
+    described_class.call(importer:)
   end
 
   shared_examples 'not create anything' do
@@ -25,6 +26,8 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
     it 'is a valid object' do
       expect(subject.errors).to eq({})
       expect(subject.success).to eq(true)
+      expect(subject.object.state).to eq('success')
+
 
       store_1 = Store.find_by(name: 'BAR DO JOÃO')
       expect(store_1.balance).to eq(0.406e5)
@@ -47,8 +50,5 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
         subject
       end.to change(Store, :count).by(5).and change(Movement, :count).by(21)
     end
-  end
-
-  context 'with invalid arguments' do
   end
 end
