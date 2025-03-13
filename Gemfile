@@ -71,6 +71,9 @@ group :development, :test do
 
   # factory_bot_rails provides integration between factory_bot and rails 5.0 or newer
   gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
+
+  # Generate beautiful API documentation, including a UI to explore and test operations, directly from your rspec integration tests. OpenAPI 2 and 3  supported.
+  gem "rswag", "~> 2.13"
 end
 
 group :development do
