@@ -1,17 +1,27 @@
 class Movement < ApplicationRecord
   enum :kind, {
-    debit: "DEBIT",
-    bank_slip: "BANK_SLIP",
-    financing: "FINANCING",
-    credit: "CREDIT",
-    loan_receipt: "LOAN_RECEIPT",
-    sales: "SALES",
-    ted_receipt: "TED_RECEIPT",
-    doc_receipt: "DOC_RECEIPT",
-    rent: "RENT"
+    debit: 1,
+    bank_slip: 2,
+    financing: 3,
+    credit: 4,
+    loan_receipt: 5,
+    sales: 6,
+    ted_receipt: 7,
+    doc_receipt: 8,
+    rent: 9
   }, validate: true
 
   validates_presence_of :occurred_on, :value, :personal_code, :card_number, :occurred_at
 
   belongs_to :store, class_name: "Store"
+
+  after_create :update_store_balance
+
+  def update_store_balance
+    if %w[debit credit loan_receipt sales ted_receipt doc_receipt]
+      store.update(balance: store.balance + value)
+    elsif %w[bank_slip financing rent]
+      store.update(balance: store.balance - value)
+    end
+  end
 end

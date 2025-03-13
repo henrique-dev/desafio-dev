@@ -1,6 +1,6 @@
 class NewMovementContract < BaseContract
   params do
-    required(:kind).filled(included_in?: Movement.kinds.keys)
+    required(:kind).filled(:integer)
     required(:occurred_on).filled(:date)
     required(:value).filled(:decimal)
     required(:personal_code).filled(:string)
