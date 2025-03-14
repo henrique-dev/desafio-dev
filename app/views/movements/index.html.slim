@@ -1,18 +1,3 @@
-div.container-header id="#{dom_id store}"
-  h1.container-title Store
-
-div.container-body
-  div.card-container
-    div.card
-      div.title Name
-      div.content = @store.name
-    div.card
-      div.title Owner Name
-      div.content = @store.owner_name
-    div.card
-      div.title Balance
-      div.content = @store.balance
-
 div.container-header
   h1.container-title Movements
 
@@ -38,5 +23,4 @@ div.container-body
           td = movement.occurred_at.strftime('%H:%M:%S')
           td = movement.created_at.strftime('%Y-%m-%d %H:%M:%S')
 
-= paginate @movements, params: { controller: 'stores', store_id: @store.id }
-
+= paginate @movements, params: { store_id: @store.id }

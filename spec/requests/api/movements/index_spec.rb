@@ -1,16 +1,18 @@
 require 'swagger_helper'
 
-RSpec.describe "/stores", type: :request do
+RSpec.describe "/stores/{store_id}/movements", type: :request do
+  let(:store) { create(:store) }
   before do
-    create_list(:store, 20)
+    create_list(:movement, 20, store:)
   end
 
-  path '/stores' do
-    get 'Get an store list' do
-      tags 'Stores'
+  path '/stores/{store_id}/movements' do
+    get 'Get an movement list' do
+      tags 'Movements'
 
       produces 'application/json'
 
+      parameter name: :store_id, in: :path, type: :string
       parameter name: :page, in: :query, type: :string, required: false
 
       context 'with valid arguments' do
@@ -18,18 +20,23 @@ RSpec.describe "/stores", type: :request do
           schema(
             type: :object,
             properties: {
-              stores: {
+              movements: {
                 type: :array,
                 items: {
                   properties: {
                     id: { type: :string },
-                    name: { type: :string },
-                    owner_name: { type: :string },
-                    balance: { type: :string },
+                    kind: { type: :string },
+                    occurred_on: { type: :string },
+                    value: { type: :string },
+                    personal_code: { type: :string },
+                    card_number: { type: :string },
+                    occurred_at: { type: :string },
+                    store_id: { type: :string },
                     created_at: { type: :string },
                     updated_at: { type: :string },
                     url: { type: :string }
-                  }, required: %i[id name owner_name balance created_at updated_at url]
+                  }, required: %i[id kind occurred_on value personal_code card_number occurred_at
+                                  store_id created_at updated_at url]
                 }
               },
               meta: {
@@ -38,13 +45,14 @@ RSpec.describe "/stores", type: :request do
                 total_count: { type: :integer },
                 per_page: { type: :integer }
               }
-            }, required: %i[stores meta]
+            }, required: %i[movements meta]
           )
 
+          let(:store_id) { store.id }
           run_test! do |response|
             data = JSON.parse(response.body)
 
-            expect(data['stores'].count).to eq(10)
+            expect(data['movements'].count).to eq(10)
           end
         end
       end

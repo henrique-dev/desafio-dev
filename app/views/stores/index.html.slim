@@ -16,7 +16,7 @@ div.container-body
           td = store.name
           td = store.owner_name
           td = store.balance
-          td = store.created_at.strftime('%Y-%m-%d')
+          td = store.created_at.strftime('%Y-%m-%d %H:%M:%S')
           td
             = link_to "Details", store
 

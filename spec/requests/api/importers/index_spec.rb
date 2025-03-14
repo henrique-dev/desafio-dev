@@ -17,15 +17,17 @@ RSpec.describe "/importers", type: :request do
         response '200', 'ok' do
           schema(
             type: :object,
-            propeerties: {
+            properties: {
               importers: {
-                type: :object,
-                properties: {
-                  id: { type: :string },
-                  created_at: { type: :string },
-                  updated_at: { type: :string },
-                  url: { type: :string }
-                }, required: %i[id created_at updated_at url]
+                type: :array,
+                items: {
+                  properties: {
+                    id: { type: :string },
+                    created_at: { type: :string },
+                    updated_at: { type: :string },
+                    url: { type: :string }
+                  }, required: %i[id created_at updated_at url]
+                }
               },
               meta: {
                 current_page: { type: :integer },

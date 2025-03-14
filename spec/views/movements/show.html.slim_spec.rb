@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "stores/show", type: :view do
+RSpec.describe "movements/show", type: :view do
   before(:each) do
     store = create(:store)
-    create_list(:movement, 20, store:)
 
     assign(:store, store)
-    assign(:movements, store.movements.page)
+    assign(:movement, create(:movement))
   end
 
   it "renders attributes in <p>" do

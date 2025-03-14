@@ -80,23 +80,24 @@ paths:
             application/json:
               schema:
                 type: object
-                propeerties:
+                properties:
                   importers:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      url:
-                        type: string
-                    required:
-                    - id
-                    - created_at
-                    - updated_at
-                    - url
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        url:
+                          type: string
+                      required:
+                      - id
+                      - created_at
+                      - updated_at
+                      - url
                   meta:
                     current_page:
                       type: integer
@@ -148,6 +149,140 @@ paths:
                 - importer
         '404':
           description: not found
+  "/stores/{store_id}/movements":
+    get:
+      summary: Get an movement list
+      tags:
+      - Movements
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  movements:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        kind:
+                          type: string
+                        occurred_on:
+                          type: string
+                        value:
+                          type: string
+                        personal_code:
+                          type: string
+                        card_number:
+                          type: string
+                        occurred_at:
+                          type: string
+                        store_id:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        url:
+                          type: string
+                      required:
+                      - id
+                      - kind
+                      - occurred_on
+                      - value
+                      - personal_code
+                      - card_number
+                      - occurred_at
+                      - store_id
+                      - created_at
+                      - updated_at
+                      - url
+                  meta:
+                    current_page:
+                      type: integer
+                    total_pages:
+                      type: integer
+                    total_count:
+                      type: integer
+                    per_page:
+                      type: integer
+                required:
+                - movements
+                - meta
+  "/stores/{store_id}/movements/{id}":
+    get:
+      summary: Get an movement
+      tags:
+      - Movements
+      parameters:
+      - name: store_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  kind:
+                    type: string
+                  occurred_on:
+                    type: string
+                  value:
+                    type: string
+                  personal_code:
+                    type: string
+                  card_number:
+                    type: string
+                  occurred_at:
+                    type: string
+                  store_id:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  url:
+                    type: string
+                required:
+                - id
+                - kind
+                - occurred_on
+                - value
+                - personal_code
+                - card_number
+                - occurred_at
+                - store_id
+                - created_at
+                - updated_at
+                - url
+        '404':
+          description: not found
   "/stores":
     get:
       summary: Get an store list
@@ -166,32 +301,33 @@ paths:
             application/json:
               schema:
                 type: object
-                propeerties:
+                properties:
                   stores:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      owner_name:
-                        type: string
-                      balance:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      url:
-                        type: string
-                    required:
-                    - id
-                    - name
-                    - owner_name
-                    - balance
-                    - created_at
-                    - updated_at
-                    - url
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        owner_name:
+                          type: string
+                        balance:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        url:
+                          type: string
+                      required:
+                      - id
+                      - name
+                      - owner_name
+                      - balance
+                      - created_at
+                      - updated_at
+                      - url
                   meta:
                     current_page:
                       type: integer

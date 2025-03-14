@@ -5,7 +5,9 @@ class StoresController < ApplicationController
     @stores = Store.page(params[:page])
   end
 
-  def show; end
+  def show
+    @movements = @store.movements.page(params[:page])
+  end
 
   private
     def set_store
