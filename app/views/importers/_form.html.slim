@@ -1,0 +1,8 @@
+= form_with(model: importer) do |form|
+  div.form-container
+    = form.file_field :file
+    - if errors.any?
+      div.error
+        span
+          = error_by_name(errors, 'file')
+    = form.submit 'Create', class: 'button primary'

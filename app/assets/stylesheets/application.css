@@ -13,3 +13,207 @@
  *= require_tree .
  *= require_self
  */
+:root {
+  --text-color: oklch(0.274 0.006 286.033);
+  --text-color-accent: oklch(0.552 0.016 285.938);
+  --text-size-small: 12px;
+  --text-size-normal: 14px;
+  --text-size-large: 32px;
+  --bg-primary: oklch(0.546 0.245 262.881);
+  --bg-primary-accent: oklch(0.623 0.214 259.815);
+  --bg-secondary: oklch(0.928 0.006 264.531);
+  --bg-secondary-accent: oklch(0.967 0.003 264.542);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-bar {
+  padding: 10px 20px;
+  background-color: oklch(0.967 0.001 286.375);
+  border-bottom: 1px solid var(--bg-secondary-accent);
+}
+
+.app-content {
+  padding: 0px 20px;
+  height: 100%;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tab-title a {
+  color: var(--text-color-accent);
+}
+
+.tab-title.selected a {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: var(--text-size-large);
+}
+
+.container-header {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.container-title {
+  flex: 1;
+}
+
+.container-body {
+  width: 100%;
+}
+
+.container-body table {
+  width: 100%;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-size-normal);
+}
+
+.button.primary {
+  background-color: var(--bg-primary);
+  color: white;
+}
+
+.button.primary:hover {
+  background-color: var(--bg-primary-accent);
+}
+
+.button.secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+}
+
+.button.secondary:hover {
+  background-color: var(--bg-secondary-accent);
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 20px 5px;
+  border: 1px solid black;
+}
+
+td {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+td:last-child {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.container-center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+input[type="file"] {
+  padding: 10px;
+  background-color: oklch(0.967 0.001 286.375);
+  border: 1px solid var(--bg-secondary-accent);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.page {
+  padding: 8px 16px;
+  margin: 0 2px;
+  border: 1px solid var(--bg-secondary-accent);
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.page a {
+  color: var(--text-color);
+}
+
+.page:hover {
+  background-color: var(--bg-secondary-accent);
+}
+
+.gap {
+  color: var(--text-color);
+  padding: 0 8px;
+}
+
+.current {
+  background-color: var(--bg-primary);
+  color: white;
+  border: none;
+}
+
+.current:hover {
+  background-color: var(--bg-primary);
+  cursor: default;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: var(--text-size-small);
+}
+
+.success {
+  color: green;
+  text-align: center;
+  font-size: var(--text-size-normal);
+}

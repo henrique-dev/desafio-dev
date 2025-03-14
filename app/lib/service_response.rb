@@ -10,4 +10,8 @@ class ServiceResponse
   def with
     yield(success, object, errors)
   end
+
+  def result
+    [ success, object, errors ]
+  end
 end
