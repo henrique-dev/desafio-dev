@@ -1,0 +1,23 @@
+div.container-header
+  h1.container-title Stores
+
+div.container-body
+  table
+    thead
+      tr
+        th align="left" Name
+        th align="left" Owner Name
+        th align="left" Balance
+        th align="left" Created at
+        th
+    tbody
+      - @stores.each do |store|
+        tr.selectable
+          td = store.name
+          td = store.owner_name
+          td = store.balance
+          td = store.created_at.strftime('%Y-%m-%d')
+          td
+            = link_to "Details", store
+
+= paginate @stores

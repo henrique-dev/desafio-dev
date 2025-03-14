@@ -1,11 +1,11 @@
 require 'swagger_helper'
 
-RSpec.describe "/importers/{id}", type: :request do
-  let(:id) { create(:importer).id }
+RSpec.describe "/stores/{id}", type: :request do
+  let(:id) { create(:store).id }
 
-  path '/importers/{id}' do
-    get 'Get an importer' do
-      tags 'Importers'
+  path '/stores/{id}' do
+    get 'Get an store' do
+      tags 'Stores'
 
       produces 'application/json'
 
@@ -16,16 +16,19 @@ RSpec.describe "/importers/{id}", type: :request do
           schema(
             type: :object,
             properties: {
-              importer: {
+              store: {
                 type: :object,
                 properties: {
                   id: { type: :string },
+                  name: { type: :string },
+                  owner_name: { type: :string },
+                  balance: { type: :string },
                   created_at: { type: :string },
                   updated_at: { type: :string },
                   url: { type: :string }
-                }, required: %i[id created_at updated_at url]
+                }, required: %i[id name owner_name balance created_at updated_at url]
               }
-            }, required: %i[importer]
+            }, required: %i[store]
           )
 
           run_test!

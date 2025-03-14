@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :importers, except: %i[edit update destroy]
+  resources :stores, only: %i[index show]
 end

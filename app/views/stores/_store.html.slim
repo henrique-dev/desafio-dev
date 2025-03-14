@@ -1,0 +1,14 @@
+div.container-header id="#{dom_id store}"
+  h1.container-title Store
+
+div.container-body
+  div.card-container
+    div.card
+      div.title Name
+      div.content = @store.name
+    div.card
+      div.title Owner Name
+      div.content = @store.owner_name
+    div.card
+      div.title Balance
+      div.content = @store.balance

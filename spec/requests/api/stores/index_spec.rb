@@ -1,13 +1,13 @@
 require 'swagger_helper'
 
-RSpec.describe "/importers", type: :request do
+RSpec.describe "/stores", type: :request do
   before do
-    create_list(:importer, 20)
+    create_list(:store, 20)
   end
 
-  path '/importers' do
-    get 'Get an importer list' do
-      tags 'Importers'
+  path '/stores' do
+    get 'Get an store list' do
+      tags 'Stores'
 
       produces 'application/json'
 
@@ -18,14 +18,17 @@ RSpec.describe "/importers", type: :request do
           schema(
             type: :object,
             propeerties: {
-              importers: {
+              stores: {
                 type: :object,
                 properties: {
                   id: { type: :string },
+                  name: { type: :string },
+                  owner_name: { type: :string },
+                  balance: { type: :string },
                   created_at: { type: :string },
                   updated_at: { type: :string },
                   url: { type: :string }
-                }, required: %i[id created_at updated_at url]
+                }, required: %i[id name owner_name balance created_at updated_at url]
               },
               meta: {
                 current_page: { type: :integer },
@@ -33,13 +36,13 @@ RSpec.describe "/importers", type: :request do
                 total_count: { type: :integer },
                 per_page: { type: :integer }
               }
-            }, required: %i[importers meta]
+            }, required: %i[stores meta]
           )
 
           run_test! do |response|
             data = JSON.parse(response.body)
 
-            expect(data['importers'].count).to eq(10)
+            expect(data['stores'].count).to eq(10)
           end
         end
       end

@@ -18,19 +18,24 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  url:
-                    type: string
+                  importer:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - id
+                    - created_at
+                    - updated_at
+                    - url
                 required:
-                - id
-                - created_at
-                - updated_at
-                - url
+                - importer
         '422':
           description: unprocessable content
           content:
@@ -74,23 +79,36 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    url:
-                      type: string
-                  required:
-                  - id
-                  - created_at
-                  - updated_at
-                  - url
+                type: object
+                propeerties:
+                  importers:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - id
+                    - created_at
+                    - updated_at
+                    - url
+                  meta:
+                    current_page:
+                      type: integer
+                    total_pages:
+                      type: integer
+                    total_count:
+                      type: integer
+                    per_page:
+                      type: integer
+                required:
+                - importers
+                - meta
   "/importers/{id}":
     get:
       summary: Get an importer
@@ -110,19 +128,128 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  url:
-                    type: string
+                  importer:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - id
+                    - created_at
+                    - updated_at
+                    - url
                 required:
-                - id
-                - created_at
-                - updated_at
-                - url
+                - importer
+        '404':
+          description: not found
+  "/stores":
+    get:
+      summary: Get an store list
+      tags:
+      - Stores
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                propeerties:
+                  stores:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      owner_name:
+                        type: string
+                      balance:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - id
+                    - name
+                    - owner_name
+                    - balance
+                    - created_at
+                    - updated_at
+                    - url
+                  meta:
+                    current_page:
+                      type: integer
+                    total_pages:
+                      type: integer
+                    total_count:
+                      type: integer
+                    per_page:
+                      type: integer
+                required:
+                - stores
+                - meta
+  "/stores/{id}":
+    get:
+      summary: Get an store
+      tags:
+      - Stores
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  store:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      owner_name:
+                        type: string
+                      balance:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - id
+                    - name
+                    - owner_name
+                    - balance
+                    - created_at
+                    - updated_at
+                    - url
+                required:
+                - store
         '404':
           description: not found
 servers:

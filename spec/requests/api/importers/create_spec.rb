@@ -23,11 +23,16 @@ RSpec.describe "/importers", type: :request do
           schema(
             type: :object,
             properties: {
-              id: { type: :string },
-              created_at: { type: :string },
-              updated_at: { type: :string },
-              url: { type: :string }
-            }, required: %i[id created_at updated_at url]
+              importer: {
+                type: :object,
+                properties: {
+                  id: { type: :string },
+                  created_at: { type: :string },
+                  updated_at: { type: :string },
+                  url: { type: :string }
+                }, required: %i[id created_at updated_at url]
+              }
+            }, required: %i[importer]
           )
 
           run_test!

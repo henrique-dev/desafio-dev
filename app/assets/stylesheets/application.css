@@ -128,7 +128,7 @@ table {
 }
 
 th {
-  padding: 20px 5px;
+  padding: 10px 5px;
   border: 1px solid black;
 }
 
@@ -141,6 +141,11 @@ td {
 td:last-child {
   width: 1px;
   white-space: nowrap;
+}
+
+tr.selectable:hover {
+  background-color: var(--bg-secondary-accent);
+  cursor: pointer;
 }
 
 .container-center {
@@ -216,4 +221,24 @@ input[type="file"] {
   color: green;
   text-align: center;
   font-size: var(--text-size-normal);
+}
+
+.card-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.card .title {
+  font-size: var(--text-size-small);
+  font-weight: bold;
+}
+
+.card .content {
 }
