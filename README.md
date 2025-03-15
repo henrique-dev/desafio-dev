@@ -4,7 +4,7 @@ O propósito dessa aplicação é ler um arquivo de texto, converter e salvar os
 
 O backend é construído com Ruby on Rails, e o PostgreSQL é utilizado como banco de dados.
 
-## Summary
+## Sumário
 Foi utilizado o padrão de serviço, onde toda a lógica relacionada a uma ação é delegada a um serviço.
 
 Vale destacar o uso de algumas gems importantes no projeto:
@@ -16,12 +16,12 @@ Vale destacar o uso de algumas gems importantes no projeto:
 - [Rubocop](https://github.com/rubocop/rubocop): Para garantir que a aplicação siga os padrões de código definidos.
 - [Omniauth](https://github.com/omniauth/omniauth): Para padronizar a autenticação com múltiplos provedores para aplicações web.
 
-## Authentication
+## Autenticação
 Para a autenticação, foi escolhido o uso do OAuth para acessar pelo navegador e um token passado no cabeçalho para se comunicar com a API, fornecendo o token no cabeçalho `Authorization`.
 
 O provedor disponível para login com OAuth é o Google, então será necessário obter o `GOOGLE_CLIENT_ID` e o `GOOGLE_CLIENT_SECRET` em https://console.developers.google.com/apis/credentials.
 
-## Running the Application
+## Rodando a aplicação
 A aplicação pode ser executada usando Docker ou localmente na máquina host.
 
 ### No Docker
