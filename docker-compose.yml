@@ -65,7 +65,7 @@ services:
     image: redis:7.2.4
     restart: always
     ports:
-      - ${DOCKER_REDIS_PORT}
+      - ${REDIS_PORT}
     networks:
       - file_parser-network
     volumes:
