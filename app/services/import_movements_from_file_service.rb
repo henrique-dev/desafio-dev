@@ -20,17 +20,21 @@ class ImportMovementsFromFileService < BaseService
   private
 
   def extract_params_from_line(line)
+    occurred_at = transform_time(line[42, 6])
+    value = BigDecimal(line[9, 10]) / 100.0
+
     {
-      kind: line[0, 1], occurred_on: line[1, 8], value: line[9, 10],
+      kind: line[0, 1], occurred_on: line[1, 8], value:,
       personal_code: line[19, 11], card_number: line[30, 12],
-      occurred_at: transform_time(line[42, 6]), owner_name: line[48, 14], name: line[62, 18].strip
+      occurred_at:, owner_name: line[48, 14], name: line[62, 18].strip
     }
+  rescue StandardError
+    # notify some error capture service
+    {}
   end
 
   def create_store(params)
-    response = FindOrCreateStoreService.call(params:)
-
-    response.object
+    FindOrCreateStoreService.call(params:).object
   end
 
   def create_movement(store, params)

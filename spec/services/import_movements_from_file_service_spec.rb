@@ -30,19 +30,19 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
       expect(subject.object.state).to eq('success')
 
       store_1 = Store.find_by(name: 'BAR DO JOÃO')
-      expect(store_1.balance).to eq(40_600.0)
+      expect(store_1.balance).to eq(406.0)
 
       store_2 = Store.find_by(name: 'LOJA DO Ó - MATRIZ')
-      expect(store_2.balance).to eq(43_400.0)
+      expect(store_2.balance).to eq(434.0)
 
       store_3 = Store.find_by(name: 'MERCADO DA AVENIDA')
-      expect(store_3.balance).to eq(233_520.0)
+      expect(store_3.balance).to eq(2_335.2)
 
       store_4 = Store.find_by(name: 'MERCEARIA 3 IRMÃOS')
-      expect(store_4.balance).to eq(702_300.0)
+      expect(store_4.balance).to eq(7_023.0)
 
       store_5 = Store.find_by(name: 'LOJA DO Ó - FILIAL')
-      expect(store_5.balance).to eq(15_232.0)
+      expect(store_5.balance).to eq(152.32)
     end
 
     it 'create a Store' do
