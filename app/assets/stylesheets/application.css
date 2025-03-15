@@ -23,6 +23,7 @@
   --bg-primary-accent: oklch(0.623 0.214 259.815);
   --bg-secondary: oklch(0.928 0.006 264.531);
   --bg-secondary-accent: oklch(0.967 0.003 264.542);
+  --bg-success: oklch(0.792 0.209 151.711);
 }
 
 html {
@@ -263,7 +264,7 @@ input[type="file"] {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 .login-button:hover {
@@ -275,3 +276,27 @@ input[type="file"] {
   height: 25px;
 }
 
+.notification-container {
+  position: fixed;
+  background-color: var(--bg-success);
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+
+.notification-container div {
+  padding: 10px;
+  display: none;
+  width: 100%;
+  align-items: center;
+}
+
+.notification-container div span {
+  flex: 1;
+}
+
+.notification-container div button {
+  right: 0;
+  padding: 5px;
+  margin-right: 10px;
+}

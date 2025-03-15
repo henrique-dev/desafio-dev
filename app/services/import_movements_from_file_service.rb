@@ -12,9 +12,7 @@ class ImportMovementsFromFileService < BaseService
       end
     end
 
-    importer.update(state: :success)
-
-    importer
+    update_importer(importer)
   end
 
   private
@@ -43,5 +41,13 @@ class ImportMovementsFromFileService < BaseService
 
   def transform_time(denormalized_time)
     "#{denormalized_time[0, 2]}:#{denormalized_time[2, 2]}:#{denormalized_time[4, 2]}"
+  end
+
+  def update_importer(importer)
+    importer.update(state: :success)
+
+    ActionCable.server.broadcast('importer_channel', { importer: })
+
+    importer
   end
 end

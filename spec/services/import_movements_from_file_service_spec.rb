@@ -25,6 +25,7 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
 
   context 'with valid arguments' do
     it 'is a valid object' do
+      expect(ActionCable).to receive(:server).and_call_original
       expect(subject.errors).to eq({})
       expect(subject.success).to eq(true)
       expect(subject.object.state).to eq('success')
