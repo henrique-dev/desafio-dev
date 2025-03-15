@@ -36,3 +36,6 @@
 /config/master.key
 
 .byebug_history
+
+# docker db volumes
+.postgresdb-data
