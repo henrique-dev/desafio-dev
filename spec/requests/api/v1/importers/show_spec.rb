@@ -1,13 +1,16 @@
 require 'swagger_helper'
 
-RSpec.describe "/importers/{id}", type: :request do
+RSpec.describe "/api/v1/importers/{id}", type: :request do
   let(:id) { create(:importer).id }
+  let(:Authorization) { ENV['API_SECRET'] }
 
-  path '/importers/{id}' do
+  path '/api/v1/importers/{id}' do
     get 'Get an importer' do
       tags 'Importers'
 
       produces 'application/json'
+
+      security [ ApiKeyAuth: [] ]
 
       parameter name: :id, in: :path, type: :string
 

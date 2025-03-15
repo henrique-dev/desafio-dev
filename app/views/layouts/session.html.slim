@@ -19,14 +19,4 @@ html
     = javascript_importmap_tags
   body
     main
-      div.app-bar
-        div.tab-container
-          div.tab-title[class="#{params['controller'] == 'importers' ? 'selected' : ''}"]
-            = link_to "Importers", importers_path
-          div.tab-title[class="#{params['controller'] == 'stores' ? 'selected' : ''}"]
-            = link_to "Stores", stores_path
-        div
-          = link_to "Logout", logout_path, class: 'button secondary'
-      div.app-content
-        p.success = notice
-        = yield
+      = yield

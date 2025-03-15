@@ -6,6 +6,7 @@ require_relative 'support/database_cleaner'
 require_relative 'support/factory_bot'
 require_relative 'support/faker'
 require_relative 'support/active_storage'
+require_relative 'support/request_macros'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 # Uncomment the line below in case you have `--require rails_helper` in the `.rspec` file
@@ -73,4 +74,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.include RequestMacros
 end

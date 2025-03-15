@@ -4,11 +4,13 @@ info:
   title: API V1
   version: v1
 paths:
-  "/importers":
+  "/api/v1/importers":
     post:
       summary: Create an importer
       tags:
       - Importers
+      security:
+      - ApiKeyAuth: []
       parameters: []
       responses:
         '201':
@@ -67,6 +69,8 @@ paths:
       summary: Get an importer list
       tags:
       - Importers
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: page
         in: query
@@ -110,11 +114,13 @@ paths:
                 required:
                 - importers
                 - meta
-  "/importers/{id}":
+  "/api/v1/importers/{id}":
     get:
       summary: Get an importer
       tags:
       - Importers
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: id
         in: path
@@ -149,11 +155,13 @@ paths:
                 - importer
         '404':
           description: not found
-  "/stores/{store_id}/movements":
+  "/api/v1/stores/{store_id}/movements":
     get:
       summary: Get an movement list
       tags:
       - Movements
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: store_id
         in: path
@@ -223,11 +231,13 @@ paths:
                 required:
                 - movements
                 - meta
-  "/stores/{store_id}/movements/{id}":
+  "/api/v1/stores/{store_id}/movements/{id}":
     get:
       summary: Get an movement
       tags:
       - Movements
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: store_id
         in: path
@@ -283,11 +293,13 @@ paths:
                 - url
         '404':
           description: not found
-  "/stores":
+  "/api/v1/stores":
     get:
       summary: Get an store list
       tags:
       - Stores
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: page
         in: query
@@ -340,11 +352,13 @@ paths:
                 required:
                 - stores
                 - meta
-  "/stores/{id}":
+  "/api/v1/stores/{id}":
     get:
       summary: Get an store
       tags:
       - Stores
+      security:
+      - ApiKeyAuth: []
       parameters:
       - name: id
         in: path
@@ -393,3 +407,9 @@ servers:
   variables:
     defaultHost:
       default: localhost:3000
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization

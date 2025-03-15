@@ -2,7 +2,7 @@ class MovementsController < ApplicationController
   before_action :set_store
   before_action :set_movement, only: %i[ show ]
   def index
-    @movements = @store.movements.page(params[:page])
+    @movements = @store.movements.order(created_at: :desc).page(params[:page])
   end
 
   def show; end

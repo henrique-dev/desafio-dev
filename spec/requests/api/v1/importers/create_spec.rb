@@ -1,18 +1,21 @@
 require 'swagger_helper'
 
-RSpec.describe "/importers", type: :request do
+RSpec.describe "/api/v1/importers", type: :request do
   let(:importer) do
     {
       file: fixture_file_upload('CNAB.txt')
     }
   end
+  let(:Authorization) { ENV['API_SECRET'] }
 
-  path '/importers' do
+  path '/api/v1/importers' do
     post 'Create an importer' do
       tags 'Importers'
 
       consumes 'multipart/form-data'
       produces 'application/json'
+
+      security [ ApiKeyAuth: [] ]
 
       parameter name: :importer, in: :formData, schema: {
         type: :object, properties: { file: { type: :file } }
@@ -35,7 +38,13 @@ RSpec.describe "/importers", type: :request do
             }, required: %i[importer]
           )
 
-          run_test!
+          run_test! do |response|
+            data = JSON.parse(response.body)
+
+            importer = Importer.find(data['importer']['id'])
+
+            expect(importer.file.attached?).to eq(true)
+          end
         end
       end
 

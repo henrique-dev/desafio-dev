@@ -1,7 +1,7 @@
 class ImportersController < ApplicationController
   before_action :set_importer, only: %i[show]
   def index
-    @importers = Importer.page(params[:page])
+    @importers = Importer.order(created_at: :desc).page(params[:page])
   end
 
   def show; end
@@ -14,14 +14,10 @@ class ImportersController < ApplicationController
   def create
     @success, @importer, @errors = CreateImporterService.call(params: post_params).result
 
-    respond_to do |format|
-      if @success
-        format.html { redirect_to importers_path, notice: "Importer was successfully created." }
-        format.json { render :show, status: :created, location: @importer }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: { errors: @errors }, status: :unprocessable_entity }
-      end
+    if @success
+      redirect_to importers_path, notice: "Importer was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

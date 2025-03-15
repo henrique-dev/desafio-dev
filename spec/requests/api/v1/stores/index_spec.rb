@@ -1,15 +1,19 @@
 require 'swagger_helper'
 
-RSpec.describe "/stores", type: :request do
+RSpec.describe "/api/v1/stores", type: :request do
+  let(:Authorization) { ENV['API_SECRET'] }
+
   before do
     create_list(:store, 20)
   end
 
-  path '/stores' do
+  path '/api/v1/stores' do
     get 'Get an store list' do
       tags 'Stores'
 
       produces 'application/json'
+
+      security [ ApiKeyAuth: [] ]
 
       parameter name: :page, in: :query, type: :string, required: false
 
