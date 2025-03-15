@@ -48,6 +48,13 @@ RSpec.describe '/api/v1/stores/{store_id}/movements/{id}', type: :request do
 
           run_test!
         end
+
+        response '401', 'unauthorized' do
+          let(:store_id) { store.id }
+          let(:Authorization) { nil }
+
+          run_test!
+        end
       end
     end
   end

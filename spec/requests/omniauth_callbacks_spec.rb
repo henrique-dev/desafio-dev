@@ -30,7 +30,7 @@ RSpec.describe '/omniauth_callbacks', type: :request do
   describe 'GET /google_oauth2' do
     it 'renders a successful response' do
       get auth_google_oauth2_callback_url
-      expect(response).to redirect_to(importers_path)
+      expect(response).to redirect_to(new_importer_path)
     end
   end
 end

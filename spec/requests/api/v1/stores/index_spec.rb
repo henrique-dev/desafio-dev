@@ -52,6 +52,14 @@ RSpec.describe '/api/v1/stores', type: :request do
           end
         end
       end
+
+      context 'with invalid arguments' do
+        response '401', 'unauthorized' do
+          let(:Authorization) { nil }
+
+          run_test!
+        end
+      end
     end
   end
 end

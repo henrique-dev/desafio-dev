@@ -12,7 +12,7 @@ div.container-body
     tbody#importers_tbody
       - @importers.each do |importer|
         tr[id="tr_importer_#{importer.id}"]
-          td = importer.file.name
+          td = importer.file.filename
           td.state = importer.state
           td = importer.created_at.strftime('%Y-%m-%d %H:%M:%S')
 

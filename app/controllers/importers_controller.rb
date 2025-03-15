@@ -17,6 +17,7 @@ class ImportersController < ApplicationController
     if @success
       redirect_to importers_path, notice: 'Importer was successfully created.'
     else
+      @importer = Importer.new
       render :new, status: :unprocessable_entity
     end
   end

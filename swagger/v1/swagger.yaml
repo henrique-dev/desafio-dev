@@ -57,6 +57,8 @@ paths:
                     required: []
                 required:
                 - errors
+        '401':
+          description: unauthorized
       requestBody:
         content:
           multipart/form-data:
@@ -114,6 +116,8 @@ paths:
                 required:
                 - importers
                 - meta
+        '401':
+          description: unauthorized
   "/api/v1/importers/{id}":
     get:
       summary: Get an importer
@@ -155,6 +159,8 @@ paths:
                 - importer
         '404':
           description: not found
+        '401':
+          description: unauthorized
   "/api/v1/stores/{store_id}/movements":
     get:
       summary: Get an movement list
@@ -231,6 +237,8 @@ paths:
                 required:
                 - movements
                 - meta
+        '401':
+          description: unauthorized
   "/api/v1/stores/{store_id}/movements/{id}":
     get:
       summary: Get an movement
@@ -293,6 +301,8 @@ paths:
                 - url
         '404':
           description: not found
+        '401':
+          description: unauthorized
   "/api/v1/stores":
     get:
       summary: Get an store list
@@ -352,6 +362,8 @@ paths:
                 required:
                 - stores
                 - meta
+        '401':
+          description: unauthorized
   "/api/v1/stores/{id}":
     get:
       summary: Get an store
@@ -402,6 +414,8 @@ paths:
                 - store
         '404':
           description: not found
+        '401':
+          description: unauthorized
 servers:
 - url: https://{defaultHost}
   variables:

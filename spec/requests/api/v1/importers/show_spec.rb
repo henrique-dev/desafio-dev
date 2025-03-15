@@ -41,6 +41,12 @@ RSpec.describe '/api/v1/importers/{id}', type: :request do
 
           run_test!
         end
+
+        response '401', 'unauthorized' do
+          let(:Authorization) { nil }
+
+          run_test!
+        end
       end
     end
   end

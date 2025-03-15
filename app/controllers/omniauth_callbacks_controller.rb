@@ -7,7 +7,7 @@ class OmniauthCallbacksController < ApplicationController
       if success
         session[:user_id] = user.id
 
-        redirect_to importers_path
+        redirect_to new_importer_path
       else
         redirect_to login_path
       end
