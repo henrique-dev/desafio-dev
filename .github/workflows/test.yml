@@ -77,7 +77,7 @@ jobs:
         with:
           file: ./Dockerfile
           context: .
-          tags: geolocation:latest
+          tags: file_parser:latest
           outputs: type=docker,dest=/tmp/myimage.tar
       - name: Create connection between services
         run: |
@@ -93,7 +93,7 @@ jobs:
             --env-file .env-example \
             -p ${{ env.APPLICATION_PORT }}:${{ env.APPLICATION_PORT }} \
             --rm \
-            geolocation:latest \
+            file_parser:latest \
             bundle exec rails db:migrate
       - name: Run tests
         run: |
@@ -102,5 +102,5 @@ jobs:
             --env-file .env-example \
             -p ${{ env.APPLICATION_PORT }}:${{ env.APPLICATION_PORT }} \
             --rm \
-            geolocation:latest \
+            file_parser:latest \
             bundle exec rspec spec --fail-fast=1 --format d

@@ -23,6 +23,11 @@ module FileParser
     #
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.cache_store = :redis_cache_store, {
+      url: ENV['CACHE_URL'],
+      namespace: 'file_parser::cache'
+    }
+
     config.time_zone = 'Etc/GMT+3'
     config.active_record.default_timezone = :utc
   end
