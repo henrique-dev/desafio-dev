@@ -38,7 +38,7 @@ jobs:
       - name: Create temporary env files
         run: |
           mkdir .envs
-          mv ../.env-example .envs/.env.test
+          mv .env-example .envs/.env.test
           cp .envs/.env.test .envs/.env.production
       - name: Check the application code
         run: |
@@ -91,7 +91,7 @@ jobs:
         run: |
           docker run \
             --network=backend \
-            --env-file ../.env-example \
+            --env-file .env-example \
             -p ${{ env.APPLICATION_PORT }}:${{ env.APPLICATION_PORT }} \
             --rm \
             geolocation:latest \
@@ -100,7 +100,7 @@ jobs:
         run: |
           docker run \
             --network=backend \
-            --env-file ../.env-example \
+            --env-file .env-example \
             -p ${{ env.APPLICATION_PORT }}:${{ env.APPLICATION_PORT }} \
             --rm \
             geolocation:latest \
