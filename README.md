@@ -6,6 +6,8 @@ A aplicação é acessivel pelo navegador e pelo consumo via API.
 
 Ao importar um arquivo com os dados, o processamento é feito em background, e quando finalizado, o usuário é alertado com uma notificação via action cable.
 
+Um arquivo de exemplo pra ser importado é o CNAB.txt.
+
 O backend é construído com Ruby on Rails, e o PostgreSQL é utilizado como banco de dados.
 
 ## Sumário
