@@ -37,7 +37,7 @@ RSpec.describe CreateUserService, type: :service do
         let(:user_params) { attributes_for(:user, provider: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ provider: [ "must be filled" ] })
+          expect(subject.errors).to eq({ provider: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -48,7 +48,7 @@ RSpec.describe CreateUserService, type: :service do
         let(:user_params) { attributes_for(:user, uid: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ uid: [ "must be filled" ] })
+          expect(subject.errors).to eq({ uid: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -59,7 +59,7 @@ RSpec.describe CreateUserService, type: :service do
         let(:user_params) { attributes_for(:user, name: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ info: { name: [ "must be filled" ] } })
+          expect(subject.errors).to eq({ info: { name: ['must be filled'] } })
           expect(subject.success).to eq(false)
         end
 
@@ -70,7 +70,7 @@ RSpec.describe CreateUserService, type: :service do
         let(:user_params) { attributes_for(:user, email: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ info: { email: [ "must be filled" ] } })
+          expect(subject.errors).to eq({ info: { email: ['must be filled'] } })
           expect(subject.success).to eq(false)
         end
 

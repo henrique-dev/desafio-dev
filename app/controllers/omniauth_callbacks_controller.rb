@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < ApplicationController
   skip_before_action :authenticate
   def google_oauth2
-    params = request.env["omniauth.auth"]
+    params = request.env['omniauth.auth']
 
     CreateUserService.call(params:).with do |success, user|
       if success

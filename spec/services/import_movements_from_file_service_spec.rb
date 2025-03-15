@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe ImportMovementsFromFileService, type: :service do
   let(:file) do
     ActionDispatch::Http::UploadedFile.new({
-      filename: Faker::File.file_name(ext: 'txt', dir: '', directory_separator: ''),
-      type: 'text/plain',
-      tempfile: fixture_file_upload('CNAB.txt')
-    })
+                                             filename: Faker::File.file_name(ext: 'txt', dir: '',
+                                                                             directory_separator: ''),
+                                             type: 'text/plain',
+                                             tempfile: fixture_file_upload('CNAB.txt')
+                                           })
   end
   let(:importer) { create(:importer, :with_file) }
 
@@ -28,21 +29,20 @@ RSpec.describe ImportMovementsFromFileService, type: :service do
       expect(subject.success).to eq(true)
       expect(subject.object.state).to eq('success')
 
-
       store_1 = Store.find_by(name: 'BAR DO JOÃO')
-      expect(store_1.balance).to eq(0.406e5)
+      expect(store_1.balance).to eq(40_600.0)
 
       store_2 = Store.find_by(name: 'LOJA DO Ó - MATRIZ')
-      expect(store_2.balance).to eq(0.434e5)
+      expect(store_2.balance).to eq(43_400.0)
 
       store_3 = Store.find_by(name: 'MERCADO DA AVENIDA')
-      expect(store_3.balance).to eq(0.23352e6)
+      expect(store_3.balance).to eq(233_520.0)
 
       store_4 = Store.find_by(name: 'MERCEARIA 3 IRMÃOS')
-      expect(store_4.balance).to eq(0.7023e6)
+      expect(store_4.balance).to eq(702_300.0)
 
       store_5 = Store.find_by(name: 'LOJA DO Ó - FILIAL')
-      expect(store_5.balance).to eq(0.15232e5)
+      expect(store_5.balance).to eq(15_232.0)
     end
 
     it 'create a Store' do

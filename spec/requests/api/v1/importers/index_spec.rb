@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe "/api/v1/importers", type: :request do
+RSpec.describe '/api/v1/importers', type: :request do
   let(:Authorization) { ENV['API_SECRET'] }
 
   before do
@@ -13,7 +13,7 @@ RSpec.describe "/api/v1/importers", type: :request do
 
       produces 'application/json'
 
-      security [ ApiKeyAuth: [] ]
+      security [ApiKeyAuth: []]
 
       parameter name: :page, in: :query, type: :string, required: false
 

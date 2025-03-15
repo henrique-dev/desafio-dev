@@ -8,12 +8,13 @@ unless Rails.env.production?
     # (under swagger_root) as JSON or YAML endpoints, then the list below should
     # correspond to the relative paths for those endpoints.
 
-    c.openapi_endpoint "/api-docs/v1/swagger.yaml", "API V1 Docs"
+    c.openapi_endpoint '/api-docs/v1/swagger.yaml', 'API V1 Docs'
 
     # Add Basic Auth in case your API is private
     c.basic_auth_enabled = true
     c.basic_auth_credentials(
-      ENV.fetch("SWAGGER_USER", SecureRandom.uuid),
-      ENV.fetch("SWAGGER_PASSWORD", SecureRandom.uuid))
+      ENV.fetch('SWAGGER_USER', SecureRandom.uuid),
+      ENV.fetch('SWAGGER_PASSWORD', SecureRandom.uuid)
+    )
   end
 end

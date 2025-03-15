@@ -23,13 +23,14 @@ module Api
       end
 
       private
-        def set_importer
-          @importer = Importer.find(params[:id])
-        end
 
-        def post_params
-          params.fetch(:importer, {}).permit(:file)
-        end
+      def set_importer
+        @importer = Importer.find(params[:id])
+      end
+
+      def post_params
+        params.fetch(:importer, {}).permit(:file)
+      end
     end
   end
 end

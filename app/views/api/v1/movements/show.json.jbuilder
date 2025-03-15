@@ -1,1 +1,1 @@
-json.partial! "movements/movement", movement: @movement, store: @store
+json.partial! 'movements/movement', movement: @movement, store: @store

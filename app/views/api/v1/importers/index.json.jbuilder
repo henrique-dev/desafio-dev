@@ -1,5 +1,5 @@
 json.importers do
-  json.partial! "importers/importer", collection: @importers, as: :importer
+  json.partial! 'importers/importer', collection: @importers, as: :importer
 end
 
 json.meta do

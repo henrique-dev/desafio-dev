@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe CreateImporterService, type: :service do
   let(:file) do
     ActionDispatch::Http::UploadedFile.new({
-      filename: Faker::File.file_name(ext: 'txt', dir: '', directory_separator: ''),
-      type: 'text/plain',
-      tempfile: fixture_file_upload('CNAB.txt')
-    })
+                                             filename: Faker::File.file_name(ext: 'txt', dir: '',
+                                                                             directory_separator: ''),
+                                             type: 'text/plain',
+                                             tempfile: fixture_file_upload('CNAB.txt')
+                                           })
   end
   let(:params) { attributes_for(:importer, file:) }
 
@@ -55,7 +56,7 @@ RSpec.describe CreateImporterService, type: :service do
         let(:params) { attributes_for(:store, file: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ file: [ "must be filled" ] })
+          expect(subject.errors).to eq({ file: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 

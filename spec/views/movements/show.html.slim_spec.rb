@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "movements/show", type: :view do
+RSpec.describe 'movements/show', type: :view do
   before(:each) do
     store = create(:store)
 
@@ -8,7 +8,7 @@ RSpec.describe "movements/show", type: :view do
     assign(:movement, create(:movement))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(//)
   end

@@ -1,5 +1,5 @@
 json.stores do
-  json.partial! "stores/store", collection: @stores, as: :store
+  json.partial! 'stores/store', collection: @stores, as: :store
 end
 
 json.meta do

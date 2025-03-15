@@ -12,6 +12,6 @@ class ServiceResponse
   end
 
   def result
-    [ success, object, errors ]
+    [success, object, errors]
   end
 end

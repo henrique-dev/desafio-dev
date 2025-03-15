@@ -13,15 +13,11 @@ class Movement < ApplicationRecord
 
   validates_presence_of :occurred_on, :value, :personal_code, :card_number, :occurred_at
 
-  belongs_to :store, class_name: "Store"
+  belongs_to :store, class_name: 'Store'
 
   after_create :update_store_balance
 
   def update_store_balance
-    if %w[debit credit loan_receipt sales ted_receipt doc_receipt]
-      store.update(balance: store.balance + value)
-    elsif %w[bank_slip financing rent]
-      store.update(balance: store.balance - value)
-    end
+    store.update(balance: store.balance + value)
   end
 end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "/omniauth_callbacks", type: :request do
+RSpec.describe '/omniauth_callbacks', type: :request do
   let(:user) { create(:user) }
-  let(:valid_attributes) {  }
-  let(:invalid_attributes) {  }
+  let(:valid_attributes) {}
+  let(:invalid_attributes) {}
 
   before do
     OmniAuth.config.test_mode = true
@@ -27,8 +27,8 @@ RSpec.describe "/omniauth_callbacks", type: :request do
     OmniAuth.config.test_mode = false
   end
 
-  describe "GET /google_oauth2" do
-    it "renders a successful response" do
+  describe 'GET /google_oauth2' do
+    it 'renders a successful response' do
       get auth_google_oauth2_callback_url
       expect(response).to redirect_to(importers_path)
     end

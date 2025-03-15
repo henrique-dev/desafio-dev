@@ -49,7 +49,7 @@ RSpec.describe FindOrCreateStoreService, type: :service do
         let(:params) { attributes_for(:store, name: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ name: [ "must be filled" ] })
+          expect(subject.errors).to eq({ name: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -60,7 +60,7 @@ RSpec.describe FindOrCreateStoreService, type: :service do
         let(:params) { attributes_for(:store, owner_name: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ owner_name: [ "must be filled" ] })
+          expect(subject.errors).to eq({ owner_name: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 

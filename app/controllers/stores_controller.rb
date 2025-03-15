@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: %i[ show ]
+  before_action :set_store, only: %i[show]
 
   def index
     @stores = Store.order(created_at: :desc).page(params[:page])
@@ -10,7 +10,8 @@ class StoresController < ApplicationController
   end
 
   private
-    def set_store
-      @store = Store.find(params[:id])
-    end
+
+  def set_store
+    @store = Store.find(params[:id])
+  end
 end

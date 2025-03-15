@@ -15,18 +15,19 @@ class ImportersController < ApplicationController
     @success, @importer, @errors = CreateImporterService.call(params: post_params).result
 
     if @success
-      redirect_to importers_path, notice: "Importer was successfully created."
+      redirect_to importers_path, notice: 'Importer was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   private
-    def set_importer
-      @importer = Importer.find(params[:id])
-    end
 
-    def post_params
-      params.fetch(:importer, {}).permit(:file)
-    end
+  def set_importer
+    @importer = Importer.find(params[:id])
+  end
+
+  def post_params
+    params.fetch(:importer, {}).permit(:file)
+  end
 end

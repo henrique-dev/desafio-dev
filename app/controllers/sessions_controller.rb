@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout "session"
+  layout 'session'
 
   skip_before_action :authenticate
 

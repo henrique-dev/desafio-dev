@@ -42,7 +42,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, kind: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ kind: [ "must be filled" ] })
+          expect(subject.errors).to eq({ kind: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -53,7 +53,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, occurred_on: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ occurred_on: [ "must be filled" ] })
+          expect(subject.errors).to eq({ occurred_on: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -64,7 +64,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, value: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ value: [ "must be filled" ] })
+          expect(subject.errors).to eq({ value: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -75,7 +75,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, personal_code: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ personal_code: [ "must be filled" ] })
+          expect(subject.errors).to eq({ personal_code: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -86,7 +86,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, card_number: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ card_number: [ "must be filled" ] })
+          expect(subject.errors).to eq({ card_number: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -97,7 +97,7 @@ RSpec.describe CreateMovementService, type: :service do
         let(:params) { attributes_for(:movement, store_id: store.id, occurred_at: nil) }
 
         it 'is not valid' do
-          expect(subject.errors).to eq({ occurred_at: [ "must be filled" ] })
+          expect(subject.errors).to eq({ occurred_at: ['must be filled'] })
           expect(subject.success).to eq(false)
         end
 
@@ -109,7 +109,7 @@ RSpec.describe CreateMovementService, type: :service do
       let(:params) { attributes_for(:movement, store_id: store.id, kind: Faker::Internet.unique.slug) }
 
       it 'is not valid' do
-        expect(subject.errors).to eq({ kind: [ "must be an integer" ] })
+        expect(subject.errors).to eq({ kind: ['must be an integer'] })
         expect(subject.success).to eq(false)
       end
 

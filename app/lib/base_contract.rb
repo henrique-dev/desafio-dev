@@ -1,4 +1,4 @@
-require "dry-validation"
+require 'dry-validation'
 
 class BaseContract < Dry::Validation::Contract
   def self.call(args = nil)
@@ -7,7 +7,7 @@ class BaseContract < Dry::Validation::Contract
 
     if contract_response.success?
       return contract_response.to_h.map do |key, value|
-        [ key, base_contract.transform(key.to_s, value) ]
+        [key, base_contract.transform(key.to_s, value)]
       end.to_h
     end
 

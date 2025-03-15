@@ -1,5 +1,5 @@
 json.movements do
-  json.partial! "movements/movement", collection: @movements, as: :movement, store: @store
+  json.partial! 'movements/movement', collection: @movements, as: :movement, store: @store
 end
 
 json.meta do

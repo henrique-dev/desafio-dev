@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,7 +23,7 @@ module FileParser
     #
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.time_zone = "Etc/GMT+3"
+    config.time_zone = 'Etc/GMT+3'
     config.active_record.default_timezone = :utc
   end
 end

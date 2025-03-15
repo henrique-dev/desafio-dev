@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe "/api/v1/stores/{id}", type: :request do
+RSpec.describe '/api/v1/stores/{id}', type: :request do
   let(:id) { create(:store).id }
   let(:Authorization) { ENV['API_SECRET'] }
 
@@ -10,7 +10,7 @@ RSpec.describe "/api/v1/stores/{id}", type: :request do
 
       produces 'application/json'
 
-      security [ ApiKeyAuth: [] ]
+      security [ApiKeyAuth: []]
 
       parameter name: :id, in: :path, type: :string
 

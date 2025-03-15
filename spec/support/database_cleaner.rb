@@ -1,6 +1,6 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation, except: [ 'ar_internal_metadata' ])
+    DatabaseCleaner.clean_with(:truncation, except: ['ar_internal_metadata'])
 
     Rails.application.load_seed
   end

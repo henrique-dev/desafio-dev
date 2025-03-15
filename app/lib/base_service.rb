@@ -30,12 +30,6 @@ class BaseService
 
     @service_object
   rescue Errors::ServiceError => e
-    if Rails.env == "development"
-      puts "rescue from: with_service_handler".red
-      puts e.message
-      ap e.backtrace
-    end
-
     @service_object.success = false
     @service_object.errors.merge!(e.errors)
     @service_object.object = nil

@@ -1,26 +1,14 @@
 class ImportMovementsFromFileService < BaseService
   def call(importer:)
     importer.file.open do |io|
-      io.set_encoding("UTF-8")
+      io.set_encoding('UTF-8')
 
       io.each_line do |line|
-        kind = line[0, 1]
-        occurred_on = line[1, 8]
-        value = line[9, 10]
-        personal_code = line[19, 11]
-        card_number = line[30, 12]
-        occurred_at = line[42, 6]
-        owner_name = line[48, 14]
-        name = line[62, 18].strip
+        params = extract_params_from_line(line)
 
-        store = create_store({ name:, owner_name: })
+        store = create_store(params)
 
-        next if store.nil?
-
-        create_movement(store, {
-          kind:, occurred_on:, value:, personal_code:, card_number:,
-          occurred_at: transform_time(occurred_at)
-        })
+        create_movement(store, params) if store.present?
       end
     end
 
@@ -30,6 +18,14 @@ class ImportMovementsFromFileService < BaseService
   end
 
   private
+
+  def extract_params_from_line(line)
+    {
+      kind: line[0, 1], occurred_on: line[1, 8], value: line[9, 10],
+      personal_code: line[19, 11], card_number: line[30, 12],
+      occurred_at: transform_time(line[42, 6]), owner_name: line[48, 14], name: line[62, 18].strip
+    }
+  end
 
   def create_store(params)
     response = FindOrCreateStoreService.call(params:)
