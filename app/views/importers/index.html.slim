@@ -1,0 +1,19 @@
+div.container-header
+  h1.container-title Importers
+  = link_to "New importer", new_importer_path, class: 'button primary'
+
+div.container-body
+  table
+    thead
+      tr
+        th align="left" File name
+        th align="left" State
+        th align="left" Created at
+    tbody
+      - @importers.each do |importer|
+        tr
+          td = importer.file.name
+          td = importer.state
+          td = importer.created_at.strftime('%Y-%m-%d %H:%M:%S')
+
+= paginate @importers

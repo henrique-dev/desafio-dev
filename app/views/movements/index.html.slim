@@ -1,0 +1,26 @@
+div.container-header
+  h1.container-title Movements
+
+div.container-body
+  table
+    thead
+      tr
+        th align="left" Kind
+        th align="left" Occurred On
+        th align="left" Value
+        th align="left" Personal code
+        th align="left" Card number
+        th align="left" Occurred at
+        th align="left" Created at
+    tbody
+      - @movements.each do |movement|
+        tr.selectable
+          td = movement.kind
+          td = movement.occurred_on.strftime('%Y-%m-%d')
+          td = movement.value
+          td = movement.personal_code
+          td = movement.card_number
+          td = movement.occurred_at.strftime('%H:%M:%S')
+          td = movement.created_at.strftime('%Y-%m-%d %H:%M:%S')
+
+= paginate @movements, params: { store_id: @store.id }

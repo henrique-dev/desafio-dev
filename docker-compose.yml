@@ -1,0 +1,87 @@
+services:
+  web:
+    container_name: file_parser_api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      postgresdb:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ./:/opt/app
+    ports:
+      - '$PORT:3000'
+    env_file:
+      - .env
+    environment:
+      PORT: 3000
+    healthcheck:
+      test: curl --fail file_parser_api:3000/health || exit 1
+      interval: 5s
+      retries: 10
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - file_parser-network
+  sidekiq:
+    container_name: file_parser_sidekiq
+    build:
+      context: .
+      dockerfile: ./Dockerfile.sidekiq
+    env_file:
+      - .env
+    volumes:
+      - ./:/opt/app
+    healthcheck:
+      test: ps aux | grep '[s]idekiq' || exit 1
+      interval: 5s
+      retries: 10
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - file_parser-network
+  postgresdb:
+    container_name: postgresdb
+    image: postgres:16.1
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}
+    volumes:
+      - pgadmin_data:/var/lib/postgresql/data
+    networks:
+      - file_parser-network
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 5s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+  redis:
+    container_name: redis
+    image: redis:7.2.4
+    restart: always
+    ports:
+      - ${DOCKER_REDIS_PORT}
+    networks:
+      - file_parser-network
+    volumes:
+      - redis_data_container:/var/lib/redis/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+
+networks:
+  file_parser-network:
+    name: file_parser-network
+    driver: bridge
+
+volumes:
+  redis_data_container:
+  pgadmin_data:
