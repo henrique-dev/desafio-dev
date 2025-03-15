@@ -2,6 +2,10 @@
 
 O propósito dessa aplicação é ler um arquivo de texto, converter e salvar os dados em um banco de dados.
 
+A aplicação é acessivel pelo navegador e pelo consumo via API.
+
+Ao importar um arquivo com os dados, o processamento é feito em background, e quando finalizado, o usuário é alertado com uma notificação via action cable.
+
 O backend é construído com Ruby on Rails, e o PostgreSQL é utilizado como banco de dados.
 
 ## Sumário

@@ -1,6 +1,6 @@
 = form_with(model: importer) do |form|
   div.form-container
-    = form.file_field :file
+    = form.file_field :file, accept: "text/plain"
     - if errors.any?
       div.error
         span
