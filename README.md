@@ -84,7 +84,7 @@ Para rodar os testes, rode o comando:
 
 ### No ambiente local
 
-In the `bin` directory, there are some utility scripts for use with Docker Compose:
+No diretório `bin`, existem alguns scripts utilitários para uso com o Docker Compose:
 - `bin/doc`: Generates the application's documentation.
 - `bin/lint`: Runs RuboCop on the application.
 - `bin/dev`: Starts the application container in the background.
