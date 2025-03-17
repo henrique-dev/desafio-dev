@@ -85,10 +85,10 @@ Para rodar os testes, rode o comando:
 ### No ambiente local
 
 No diretório `bin`, existem alguns scripts utilitários para uso com o Docker Compose:
-- `bin/doc`: Generates the application's documentation.
-- `bin/lint`: Runs RuboCop on the application.
-- `bin/dev`: Starts the application container in the background.
-- `bin/test`: Runs the application's tests.
+- `bin/doc`: Gera a documentação da aplicação.
+- `bin/lint`: Executa o RuboCop na aplicação.
+- `bin/dev`: Inicia a aplicação.
+- `bin/test`: Executa os testes da aplicação.
 
 #### Requisitos
 - Ruby 3.3.4
